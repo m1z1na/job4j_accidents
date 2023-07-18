@@ -24,4 +24,14 @@ public class AccidentService implements IAccidentService {
     public List<Accident> findAll() {
         return new ArrayList<Accident>(this.memory.getAll().values());
     }
+
+    @Override
+    public void create(Accident accident) {
+        memory.save(accident);
+    }
+
+    @Override
+    public Accident getById(int id) {
+        return memory.findById(id);
+    }
 }
