@@ -3,13 +3,15 @@ package ru.job4j.accidents.repository;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class AccidentMem {
-    Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
+    private final Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
     private final AtomicInteger counter = new AtomicInteger(0);
 
     public AccidentMem() {
@@ -27,8 +29,8 @@ public class AccidentMem {
         accidents.put(accident.getId(), accident);
     }
 
-    public Map<Integer, Accident> getAll() {
-        return accidents;
+    public List<Accident> getAll() {
+        return new ArrayList<Accident>(accidents.values());
     }
 
     public Accident findById(int id) {

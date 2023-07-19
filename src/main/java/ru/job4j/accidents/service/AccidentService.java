@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.repository.AccidentMem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,7 +21,7 @@ public class AccidentService implements IAccidentService {
 
     @Override
     public List<Accident> findAll() {
-        return new ArrayList<Accident>(this.memory.getAll().values());
+        return this.memory.getAll();
     }
 
     @Override
