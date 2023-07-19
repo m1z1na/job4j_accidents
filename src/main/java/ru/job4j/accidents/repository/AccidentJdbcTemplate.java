@@ -1,7 +1,6 @@
 package ru.job4j.accidents.repository;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
@@ -10,7 +9,6 @@ import java.util.List;
 @Repository
 @AllArgsConstructor
 public class AccidentJdbcTemplate {
-//    @Autowired
     private final JdbcTemplate jdbc;
 
     public Accident save(Accident accident) {
