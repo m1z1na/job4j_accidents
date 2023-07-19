@@ -33,7 +33,7 @@
                 Новый инцидент
             </div>
             <div class="card-body">
-                <form th:action="@{/saveAccident}" method="POST"  th:object="${accident}"enctype="multipart/form-data">
+                <form th:action="@{/editAccident}" method="POST"  th:object="${accident}"enctype="multipart/form-data">
                     <input type="hidden" name="id" th:field="*{id}">
                     <div class="form-group">
                         <label for="name">Имя</label>
@@ -41,7 +41,7 @@
                         <label for="text">Текст</label>
                         <input type="text" class="form-control" th:field="*{text}" name="text" id="text">
                         <label for="address">Адрес</label>
-                        <input type="address" class="form-control" th:field="*{address}" name="address" id="address">
+                        <input type="text" class="form-control" th:field="*{address}" name="address" id="address">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Сохранить</button>
                 </form>

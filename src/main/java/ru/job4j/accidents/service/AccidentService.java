@@ -26,7 +26,12 @@ public class AccidentService implements IAccidentService {
 
     @Override
     public void create(Accident accident) {
-        memory.save(accident);
+        memory.create(accident);
+    }
+
+    @Override
+    public void update(Accident accident) {
+        memory.update(accident);
     }
 
     @Override

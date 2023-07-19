@@ -15,17 +15,19 @@ public class AccidentMem {
     private final AtomicInteger counter = new AtomicInteger(0);
 
     public AccidentMem() {
-        accidents.put(counter.addAndGet(1), new Accident(0, "name1", "text1", "address1"));
-        accidents.put(counter.addAndGet(1), new Accident(2, "name2", "text2", "address2"));
-        accidents.put(counter.addAndGet(1), new Accident(3, "name3", "text3", "address3"));
-        accidents.put(counter.addAndGet(1), new Accident(4, "name4", "text4", "address4"));
-        accidents.put(counter.addAndGet(1), new Accident(5, "name5", "text5", "address5"));
+        create(new Accident(0, "name1", "text1", "address1"));
+        create(new Accident(2, "name2", "text2", "address2"));
+        create(new Accident(3, "name3", "text3", "address3"));
+        create(new Accident(4, "name4", "text4", "address4"));
+        create(new Accident(5, "name5", "text5", "address5"));
     }
 
-    public void save(Accident accident) {
-        if (accident.getId() == 0) {
-            accident.setId(counter.addAndGet(1));
-        }
+    public void create(Accident accident) {
+        accident.setId(counter.addAndGet(1));
+        accidents.put(accident.getId(), accident);
+    }
+
+    public void update(Accident accident) {
         accidents.put(accident.getId(), accident);
     }
 

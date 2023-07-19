@@ -7,5 +7,6 @@ import ru.job4j.accidents.model.Accident;
 public interface IAccidentService {
     List<Accident> findAll();
     void create(Accident accident);
+    void update(Accident accident);
     Accident getById(int id);
 }
