@@ -1,5 +1,6 @@
 package ru.job4j.accidents.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,8 @@ public class AccidentController {
 
     @GetMapping("/createAccident")
     public String viewCreateAccident(Model model) {
-        model.addAttribute("types", this.accidents.findAllType());
+        model.addAttribute("types", this.accidents.findAllTypes());
+        model.addAttribute("rules", this.accidents.findAllRules());
         return "createAccident";
     }
 
@@ -28,7 +30,8 @@ public class AccidentController {
     }
 
     @PostMapping("/saveAccident")
-    public String save(@ModelAttribute Accident accident) {
+    public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
+        String[] ids = req.getParameterValues("rIds");
         accidents.create(accident);
         return "redirect:/index";
     }
