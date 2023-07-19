@@ -16,10 +16,10 @@ public class AccidentController {
     private final IAccidentService accidents;
 
     @GetMapping("/createAccident")
-    public String viewCreateAccident() {
+    public String viewCreateAccident(Model model) {
+        model.addAttribute("types", this.accidents.findAllType());
         return "createAccident";
     }
-
 
     @GetMapping("/formUpdateAccident")
     public String edit(@RequestParam("id") int id, Model model) {
