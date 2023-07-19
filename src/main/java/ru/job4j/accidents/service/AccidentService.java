@@ -27,7 +27,7 @@ public class AccidentService implements IAccidentService {
     @Autowired
     public AccidentService(AccidentMem memory, AccidentTypeMem memoryType, AccidentJdbcTemplate accidentsRepostiory) {
         this.memory = memory;
-//        this.accidentsRepostiory = accidentsRepostiory;
+/*        this.accidentsRepostiory = accidentsRepostiory;*/
         this.accidentsRepostiory = accidentsRepostiory;
     }
 
