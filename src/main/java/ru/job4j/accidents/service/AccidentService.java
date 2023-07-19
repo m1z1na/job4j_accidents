@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.AccidentType;
 import ru.job4j.accidents.model.Rule;
+import ru.job4j.accidents.repository.AccidentHibernate;
 import ru.job4j.accidents.repository.AccidentJdbcTemplate;
 import ru.job4j.accidents.repository.AccidentMem;
 import ru.job4j.accidents.repository.AccidentTypeMem;
@@ -17,15 +18,16 @@ public class AccidentService implements IAccidentService {
 
     private final AccidentMem memory;
 
-    private final AccidentJdbcTemplate accidentsRepostiory;
+   /* private final AccidentJdbcTemplate accidentsRepostiory;*/
 
+    private final AccidentHibernate accidentsRepostiory;
     @Override
     public void create(Accident accident) {
         accidentsRepostiory.save(accident);
     }
 
     @Autowired
-    public AccidentService(AccidentMem memory, AccidentTypeMem memoryType, AccidentJdbcTemplate accidentsRepostiory) {
+    public AccidentService(AccidentMem memory, AccidentTypeMem memoryType, AccidentHibernate accidentsRepostiory) {
         this.memory = memory;
 /*        this.accidentsRepostiory = accidentsRepostiory;*/
         this.accidentsRepostiory = accidentsRepostiory;
