@@ -1,4 +1,4 @@
-package ru.job4j_accidents.controller;
+package ru.job4j.accidents.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.job4j.accidents.model.Accident;
-import ru.job4j_accidents.service.IAccidentService;
+import ru.job4j.accidents.service.IAccidentService;
 
 @Controller
 @AllArgsConstructor
