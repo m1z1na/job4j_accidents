@@ -53,8 +53,8 @@ public class AccidentService implements IAccidentService {
     }*/
 
     @Override
-    public void update(Accident accident) {
-        memory.update(accident);
+    public Accident update(Accident accident) {
+        return memory.update(accident);
     }
 
     @Override

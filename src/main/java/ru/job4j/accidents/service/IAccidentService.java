@@ -11,6 +11,6 @@ public interface IAccidentService {
     List<AccidentType> findAllTypes();
     List<Rule> findAllRules();
     void create(Accident accident);
-    void update(Accident accident);
+    Accident update(Accident accident);
     Accident getById(int id);
 }

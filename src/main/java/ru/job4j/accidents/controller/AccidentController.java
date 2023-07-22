@@ -27,7 +27,12 @@ public class AccidentController {
 
     @GetMapping("/formUpdateAccident")
     public String edit(@RequestParam("id") int id, Model model) {
-        model.addAttribute("accident", this.accidents.getById(id));
+        var accident = this.accidents.getById(id);
+        if (accident == null) {
+            model.addAttribute("message", "Not Found");
+            return "errors/404";
+        }
+        model.addAttribute("accident", accident);
         return "editAccident";
     }
 
@@ -39,8 +44,13 @@ public class AccidentController {
     }
 
     @PostMapping("/editAccident")
-    public String update(@ModelAttribute Accident accident) {
-        accidents.update(accident);
-        return "redirect:/index";
+    public String update(@ModelAttribute Accident accident, Model model) {
+        var newAccident = accidents.update(accident);
+        if (newAccident.equals(accident)) {
+            return "redirect:/index";
+        } else {
+            model.addAttribute("message", "Update error");
+            return "errors/404";
+        }
     }
 }

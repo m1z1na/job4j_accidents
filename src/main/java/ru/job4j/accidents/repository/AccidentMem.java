@@ -35,8 +35,8 @@ public class AccidentMem {
         accidents.put(accident.getId(), accident);
     }
 
-    public void update(Accident accident) {
-        accidents.computeIfPresent(accident.getId(), (key, value) -> accident);
+    public Accident update(Accident accident) {
+       return accidents.computeIfPresent(accident.getId(), (key, value) -> accident);
     }
 
     public List<Accident> getAll() {
