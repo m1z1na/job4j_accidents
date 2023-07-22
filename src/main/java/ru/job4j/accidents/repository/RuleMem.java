@@ -22,8 +22,9 @@ public class RuleMem {
         rules.add(rule);
     }
 
-    public List<Rule> getAll() {
-        return new ArrayList<>(rules);
+    public Set<Rule> getAll() {
+        return rules;
     }
+
 
 }
