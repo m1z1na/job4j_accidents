@@ -3,8 +3,6 @@ package ru.job4j.accidents.repository;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Rule;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -25,6 +23,5 @@ public class RuleMem {
     public Set<Rule> getAll() {
         return rules;
     }
-
 
 }
