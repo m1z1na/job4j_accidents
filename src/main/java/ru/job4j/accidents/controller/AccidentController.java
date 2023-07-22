@@ -1,6 +1,6 @@
 package ru.job4j.accidents.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.service.IAccidentService;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @AllArgsConstructor
