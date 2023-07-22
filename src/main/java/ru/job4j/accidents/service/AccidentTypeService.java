@@ -8,7 +8,7 @@ import ru.job4j.accidents.repository.AccidentTypeMem;
 import java.util.List;
 
 @Service
-public class AccidentTypeService implements IAccidentTypeService{
+public class AccidentTypeService implements IAccidentTypeService {
 
     private final AccidentTypeMem memoryTypes;
     @Autowired
