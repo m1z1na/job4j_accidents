@@ -12,6 +12,7 @@ import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.service.IAccidentService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -27,13 +28,14 @@ public class AccidentController {
 
     @GetMapping("/formUpdateAccident")
     public String edit(@RequestParam("id") int id, Model model) {
-        var accident = this.accidents.getById(id);
-        if (accident == null) {
-            model.addAttribute("message", "Not Found");
-            return "errors/404";
+        Optional<Accident> accident = this.accidents.getById(id);
+        if (accident.isPresent()) {
+            model.addAttribute("accident", accident);
+            return "editAccident";
         }
-        model.addAttribute("accident", accident);
-        return "editAccident";
+        model.addAttribute("message", "Not Found");
+        return "errors/404";
+
     }
 
     @PostMapping("/saveAccident")
@@ -45,12 +47,10 @@ public class AccidentController {
 
     @PostMapping("/editAccident")
     public String update(@ModelAttribute Accident accident, Model model) {
-        var newAccident = accidents.update(accident);
-        if (newAccident.equals(accident)) {
+        if (accidents.update(accident)) {
             return "redirect:/index";
-        } else {
-            model.addAttribute("message", "Update error");
-            return "errors/404";
         }
+        model.addAttribute("message", "Update error");
+        return "errors/404";
     }
 }

@@ -10,6 +10,7 @@ import ru.job4j.accidents.repository.AccidentMem;
 import ru.job4j.accidents.repository.AccidentTypeMem;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -66,12 +67,13 @@ public class AccidentService implements IAccidentService {
     }
 
     @Override
-    public Accident update(Accident accident) {
+    public boolean update(Accident accident) {
         return memory.update(accident);
     }
 
     @Override
-    public Accident getById(int id) {
+    public Optional<Accident> getById(int id) {
+
         return memory.findById(id);
     }
 }

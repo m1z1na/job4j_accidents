@@ -1,6 +1,7 @@
 package ru.job4j.accidents.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import ru.job4j.accidents.model.Accident;
@@ -11,9 +12,8 @@ public interface IAccidentService {
 
     List<Accident> findAll();
     void create(Accident accident);
-    Accident update(Accident accident);
-    Accident getById(int id);
-
+    boolean update(Accident accident);
+    Optional<Accident> getById(int id);
     List<AccidentType> findAllTypes();
     Set<Rule> findAllRules();
 }
