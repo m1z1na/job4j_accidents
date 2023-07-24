@@ -22,7 +22,7 @@ public class AccidentMem {
 
     public boolean update(Accident accident) {
         var newAccident = accidents.computeIfPresent(accident.getId(), (key, value) -> accident);
-        return newAccident.equals(accident);
+        return newAccident != null ? true : false;
     }
 
     public List<Accident> getAll() {
