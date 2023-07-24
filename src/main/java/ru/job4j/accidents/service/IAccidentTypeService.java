@@ -7,5 +7,5 @@ public interface IAccidentTypeService {
 
     List<AccidentType> findAll();
 
-    AccidentType getById(int id);
+    AccidentType findById(int id);
 }

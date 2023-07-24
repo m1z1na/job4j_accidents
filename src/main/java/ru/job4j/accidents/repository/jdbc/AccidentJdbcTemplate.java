@@ -1,10 +1,12 @@
-package ru.job4j.accidents.repository;
+package ru.job4j.accidents.repository.jdbc;
 
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Accident;
+
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
@@ -26,5 +28,22 @@ public class AccidentJdbcTemplate {
                     return accident;
                 });
     }
+
+    public boolean update(Accident accident) {
+        jdbc.update("update into accidents (name) values (?) where id=(?)",
+                accident.getName(), accident.getId());
+        return true;
+    }
+
+
+    public Optional<Accident> findById(int id) {
+        String sql = "SELECT * FROM accidents WHERE ID=?";
+        return Optional.ofNullable((Accident) jdbc.queryForObject(
+                sql, new Object[]{id},  Accident.class));
+
+
+
+    }
+
 
 }
